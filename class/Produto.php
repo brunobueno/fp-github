@@ -29,4 +29,40 @@ class Produto
             echo "Erro: {$e->getMessage()}";
         }
     }
+
+    public function atualizar()
+    {
+        $con = Conexao::conectar();
+        $stmt = $con->prepare("UPDATE produto SET descricao = ?, unidade = ?, preco = ? WHERE codigo = ?");
+        $stmt->bindParam(1, $this->descricao);
+        $stmt->bindParam(2, $this->unidade);
+        $stmt->bindParam(3, $this->preco);
+        $stmt->bindParam(4, $this->codigo);
+        $stmt->execute();
+    }
+
+    public function deletar()
+    {
+        $con = Conexao::conectar();
+        $stmt = $con->prepare("DELETE FROM produto WHERE codigo = ?");
+        $stmt->bindParam(1, $this->codigo);
+        $stmt->execute();
+    }
+
+    public function listar()
+    {
+        $con = Conexao::conectar();
+        $stmt = $con->prepare("SELECT * FROM produto");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function listarId($codigo)
+    {
+        $con = Conexao::conectar();
+        $stmt = $con->prepare("SELECT * FROM produto WHERE codigo = ?");
+        $stmt->bindParam(1, $codigo);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
 }
