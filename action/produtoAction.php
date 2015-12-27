@@ -15,7 +15,6 @@ require_once "../class/Produto.php";
         $post = $_POST;
         $produtoInfo = array($post['descricao'], $post['unidade'], $post['preco']);
 
-
         foreach($produtoInfo as $info)
         {
             $erro = empty($info) ? "Preencha o campo {$info}" : "";
