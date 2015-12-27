@@ -7,12 +7,13 @@
  */
 
 require_once "../action/produtoAction.php";
+
 ?>
 
 <!-- Coluna da esquerda -->
 <div class="col-md-6 col-xs-12">
     <!-- Alerta -->
-    <?php if($erro != "") {?>
+    <?php if(!empty($erro)) {?>
     <div class="bs-example bs-example-standalone" data-example-id="dismissible-alert-js">
         <div class="alert alert-<?=$tipoErro?> alert-dismissible fade in" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -24,12 +25,12 @@ require_once "../action/produtoAction.php";
     <!-- Form -->
     <form action="index.php" method="post">
         <label for="descricao">Descrição: </label>
-        <input name="descricao" class="form-control" type="text"><br>
+        <input name="descricao" class="form-control" type="text" value="<?=$descricao?>"><br>
         <label for="unidade">Unidade:</label>
-        <input name="unidade" class="form-control" type="text"><br>
+        <input name="unidade" class="form-control" type="text" value="<?=$unidade?>"><br>
         <label for="preco">Preço:</label>
-        <input name="preco" class="form-control" type="text"><br>
-        <button class="btn btn-success btn-block" name="<?=$acao?>"><span class="glyphicon glyphicon-plus"></span></button>
+        <input name="preco" class="form-control" type="text" value="<?=$preco?>"><br>
+        <button type="submit" class="btn btn-success btn-block" name="<?=$acao?>"><span class="glyphicon glyphicon-plus"></span></button>
     </form>
 </div>
 
@@ -71,4 +72,6 @@ require_once "../action/produtoAction.php";
         </table>
     </div>
 </div>
+
+
 <?php include_once "../templates/footer.php";?>
