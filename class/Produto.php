@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Conexao.php';
 /**
  * Created by PhpStorm.
  * User: Eduardo
@@ -57,11 +57,11 @@ class Produto
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function listarId($codigo)
+    public function listarId()
     {
         $con = Conexao::conectar();
         $stmt = $con->prepare("SELECT * FROM produto WHERE codigo = ?");
-        $stmt->bindParam(1, $codigo);
+        $stmt->bindParam(1, $this->codigo);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_OBJ);
     }

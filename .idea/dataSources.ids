@@ -20,7 +20,7 @@
         <data-type>varchar(3)</data-type>
       </column>
       <column id="6" parent="2" name="preco">
-        <data-type>float</data-type>
+        <data-type>double</data-type>
       </column>
       <key id="7" parent="2" name="PRIMARY">
         <columns>codigo</columns>

@@ -24,13 +24,14 @@ require_once "../action/produtoAction.php";
 
     <!-- Form -->
     <form action="index.php" method="post">
+        <input type="hidden" name="codigo" value="<?=$codigo?>">
         <label for="descricao">Descrição: </label>
         <input name="descricao" class="form-control" type="text" value="<?=$descricao?>"><br>
         <label for="unidade">Unidade:</label>
         <input name="unidade" class="form-control" type="text" value="<?=$unidade?>"><br>
         <label for="preco">Preço:</label>
         <input name="preco" class="form-control" type="text" value="<?=$preco?>"><br>
-        <button type="submit" class="btn btn-success btn-block" name="<?=$acao?>"><span class="glyphicon glyphicon-plus"></span></button>
+        <button type="submit" class="btn btn-success btn-block" name="cadastrar"><span class="glyphicon glyphicon-plus"></span></button>
     </form>
 </div>
 
@@ -50,24 +51,30 @@ require_once "../action/produtoAction.php";
                 <th></th>
             </thead>
             <tbody>
+            <?php
+            $produto = new Produto();
+            $dados = $produto->listar();
+            foreach ($dados as $dado) { ?>
                 <tr>
-                    <td>1</td>
-                    <td>Carne Moída</td>
-                    <td>KG</td>
-                    <td>R$ 13,99</td>
+                    <td><?=$dado->codigo?></td>
+                    <td><?=$dado->descricao?></td>
+                    <td><?=$dado->unidade?></td>
+                    <td>R$ <?= number_format($dado->preco, 2, ',', '.')?></td>
                     <td>
                         <form action="index.php" method="post">
-                            <input type="hidden" name="codigo" value="1">
+                            <input type="hidden" name="codigo" value="<?=$dado->codigo?>">
                             <button type="submit" name="editar" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
                         </form>
                     </td>
                     <td>
                         <form action="index.php" method="post">
-                            <input type="hidden" name="codigo" value="1">
+                            <input type="hidden" name="codigo" value="<?=$dado->codigo?>">
                             <button type="submit" name="excluir" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                         </form>
                     </td>
                 </tr>
+            <?php }
+            ?>
             </tbody>
         </table>
     </div>

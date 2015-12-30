@@ -7,84 +7,99 @@ require_once "../class/Produto.php";
  * Time: 20:22
  */
 
+$codigo = "";
 $descricao = "";
 $unidade = "";
 $preco = "";
 
 $erro = "";
 $tipoErro = "";
-$acao = "cadastrar";
 $campos = "";
+
+$produto = new Produto();
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
-    $produtoInfo = array(
-        "Descrição" => isset($_POST['descricao']) ? $_POST['descricao'] : "",
-        "Unidade" => isset($_POST['unidade']) ? $_POST['unidade'] : "",
-        "Preço" => isset($_POST['preco']) ? $_POST['preco'] : ""
-    );
+    $codigo = isset($_POST['codigo']) ? trim($_POST['codigo']) : "";
+    $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : "";
+    $unidade = isset($_POST['unidade']) ? trim($_POST['unidade']) : "";
+    $preco = isset($_POST['preco']) ? trim($_POST['preco']) : "";
 
-    foreach($produtoInfo as $info => $valor)
+    switch (isset($_POST))
     {
-        $campos = empty($valor) ? $campos . ", {$info}" : "";
-        switch($info)
-        {
-            case "Descrição":
-                $descricao = $valor;
-                break;
-            case "Unidade":
-                $unidade = $valor;
-                break;
-            case "Preço":
-                $preco = $valor;
-                break;
-        }
-    }
+        case isset($_POST['cadastrar']):
 
-    if(!empty($campos))
-    {
-        $erro = "Preencha os campos: ". substr($campos, 2, strlen($campos)).".";
-        $tipoErro = empty($erro) ? "" : "danger";
-    }
+            if(empty($descricao))
+            {
+                $campos = ", Descrição";
+            }
+            if(empty($unidade))
+            {
+                $campos = $campos.", Unidade";
+            }
+            if(empty($preco))
+            {
+                $campos = $campos.", Preço";
+            }
 
-    /*
-    if(empty($erro)) {
-        $produto = new Produto();
-        switch ($acao) {
-            case "cadastrar":
+            if(!empty($campos))
+            {
+                $erro = "Preencha os campos: ". substr($campos, 2, strlen($campos)).".";
+                $tipoErro = empty($erro) ? "" : "danger";
+            }
+            else
+            {
                 try {
                     $produto->descricao = $_POST['descricao'];
                     $produto->unidade = $_POST['unidade'];
                     $produto->preco = $_POST['preco'];
-                    $produto->inserir();
-                    $erro = "O produto {$produto->descricao} foi adicionado.";
-                } catch (Exception $e) {
+                    if(!empty($codigo))
+                    {
+                        $produto->codigo = $codigo;
+                        $produto->atualizar();
+                        $produtoAt = $produto->listarId();
+                        $erro = "O produto {$produto->descricao} foi alterado.";
+                    }
+                    else
+                    {
+                        $produto->inserir();
+                        $erro = "O produto {$produto->descricao} foi adicionado.";
+                    }
+                    $tipoErro = "success";
+                } catch (Exception $e)
+                {
                     $erro = $e->getMessage();
                 }
-                break;
-            case "editar":
-                try {
-                    $produto->codigo = $_POST['codigo'];
-                    $produto->descricao = $_POST['descricao'];
-                    $produto->unidade = $_POST['unidade'];
-                    $produto->preco = $_POST['preco'];
-                    $produto->atualizar();
-                    $erro = "O produto foi atualizado.";
-                } catch (Exception $e) {
-                    $erro = $e->getMessage();
+                finally
+                {
+                    $codigo = "";
+                    $descricao = "";
+                    $unidade = "";
+                    $preco = "";
                 }
-                break;
-            case "excluir":
-                try {
-                    $produto->codigo = $_POST['codigo'];
-                    $produto->deletar();
-                    $erro = "O produto foi deletado.";
-                } catch (Exception $e) {
-                    $erro = $e->getMessage();
-                }
-                break;
-        }
+            }
+            break;
+        //Atribuir os valores do produto clicado na tabela para o form.
+        case isset($_POST['editar']):
+            $codigo = $produto->codigo = $codigo;
+            $prod = $produto->listarId();
+            $descricao = $prod->descricao;
+            $unidade = $prod->unidade;
+            $preco = $prod->preco;
+            break;
+        case isset($_POST['excluir']):
+            try
+            {
+                $produto->codigo = $codigo;
+                $produto->deletar();
+                $erro = "O produto foi deletado.";
+                $tipoErro = "success";
+            } catch (Exception $e) {
+                $erro = $e->getMessage();
+            }
+            break;
     }
-    */
 }
 ?>
+
+
