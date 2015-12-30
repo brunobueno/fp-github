@@ -56,19 +56,19 @@ require_once "../action/produtoAction.php";
             $dados = $produto->listar();
             foreach ($dados as $dado) { ?>
                 <tr>
-                    <td><?=$dado->codigo?></td>
+                    <td><?=$dado->produto_id?></td>
                     <td><?=$dado->descricao?></td>
                     <td><?=$dado->unidade?></td>
                     <td>R$ <?= number_format($dado->preco, 2, ',', '.')?></td>
                     <td>
                         <form action="index.php" method="post">
-                            <input type="hidden" name="codigo" value="<?=$dado->codigo?>">
+                            <input type="hidden" name="codigo" value="<?=$dado->produto_id?>">
                             <button type="submit" name="editar" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
                         </form>
                     </td>
                     <td>
                         <form action="index.php" method="post">
-                            <input type="hidden" name="codigo" value="<?=$dado->codigo?>">
+                            <input type="hidden" name="codigo" value="<?=$dado->produto_id?>">
                             <button type="submit" name="excluir" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                         </form>
                     </td>

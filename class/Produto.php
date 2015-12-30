@@ -33,7 +33,7 @@ class Produto
     public function atualizar()
     {
         $con = Conexao::conectar();
-        $stmt = $con->prepare("UPDATE produto SET descricao = ?, unidade = ?, preco = ? WHERE codigo = ?");
+        $stmt = $con->prepare("UPDATE produto SET descricao = ?, unidade = ?, preco = ? WHERE produto_id = ?");
         $stmt->bindParam(1, $this->descricao);
         $stmt->bindParam(2, $this->unidade);
         $stmt->bindParam(3, $this->preco);
@@ -44,7 +44,7 @@ class Produto
     public function deletar()
     {
         $con = Conexao::conectar();
-        $stmt = $con->prepare("DELETE FROM produto WHERE codigo = ?");
+        $stmt = $con->prepare("DELETE FROM produto WHERE produto_id = ?");
         $stmt->bindParam(1, $this->codigo);
         $stmt->execute();
     }
@@ -60,7 +60,7 @@ class Produto
     public function listarId()
     {
         $con = Conexao::conectar();
-        $stmt = $con->prepare("SELECT * FROM produto WHERE codigo = ?");
+        $stmt = $con->prepare("SELECT * FROM produto WHERE produto_id = ?");
         $stmt->bindParam(1, $this->codigo);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_OBJ);
