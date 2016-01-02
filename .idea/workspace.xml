@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92dc5707-e8ba-4d3c-b616-4c2345da9a2d" name="Default" comment="Alterações:&#10;Listagem dos produtos.&#10;Cadastro, alteração e exclusão dos mesmos.&#10;A forma como era tratado os campos vazios foi alterada devido um problema.">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/php.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/index.php" afterPath="$PROJECT_DIR$/site/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/header.php" afterPath="$PROJECT_DIR$/templates/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/menu.php" afterPath="$PROJECT_DIR$/templates/menu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/action/produtoAction.php" afterPath="$PROJECT_DIR$/action/produtoAction.php" />
     </list>
     <list id="6170a75a-a276-4f14-a51e-d42147ee1899" name="Rejected commit: Default" comment="Alterações:&#10;Listagem dos produtos.&#10;Cadastro, alteração e exclusão dos mesmos.&#10;A forma como era tratado os campos vazios foi alterada devido um problema." />
     <ignored path="fp-github.iws" />
@@ -49,14 +46,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/site/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5167224">
-              <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+            <state vertical-scroll-proportion="-15.807693">
+              <caret line="57" column="40" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="71" />
               <folding>
                 <element signature="e#84#172#0#PHP" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="produtoAction.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/action/produtoAction.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.0802675">
+              <caret line="54" column="78" selection-start-line="54" selection-start-column="78" selection-end-line="54" selection-end-column="78" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,7 +123,6 @@
         <option value="$PROJECT_DIR$/templates/a.html" />
         <option value="$PROJECT_DIR$/css/bootstrap-theme.css" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5c5a8c92-4878-44a8-87ce-bc94f3436332/console.sql" />
-        <option value="$PROJECT_DIR$/action/produtoAction.php" />
         <option value="$PROJECT_DIR$/class/Conexao.php" />
         <option value="$PROJECT_DIR$/class/Produto.php" />
         <option value="$PROJECT_DIR$/templates/footer.php" />
@@ -125,6 +131,7 @@
         <option value="$PROJECT_DIR$/templates/header.php" />
         <option value="$PROJECT_DIR$/templates/menu.php" />
         <option value="$PROJECT_DIR$/site/index.php" />
+        <option value="$PROJECT_DIR$/action/produtoAction.php" />
       </list>
     </option>
   </component>
@@ -213,6 +220,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fp-github" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fp-github" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="action" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -319,7 +340,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18532526" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -698,14 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/action/produtoAction.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/class/Produto.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -758,11 +771,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/site/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5167224">
-          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        <state vertical-scroll-proportion="-15.807693">
+          <caret line="57" column="40" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="71" />
           <folding>
             <element signature="e#84#172#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/produtoAction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0802675">
+          <caret line="54" column="78" selection-start-line="54" selection-start-column="78" selection-end-line="54" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>

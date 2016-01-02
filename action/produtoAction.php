@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 try {
                     $produto->descricao = $_POST['descricao'];
                     $produto->unidade = $_POST['unidade'];
-                    $produto->preco = $_POST['preco'];
+                    $produto->preco = str_replace(',', '.', $_POST['preco']);;
                     if(!empty($codigo))
                     {
                         $produto->codigo = $codigo;
