@@ -7,10 +7,10 @@
  */
 
 require_once "../action/produtoAction.php";
-
 ?>
 
-<!-- Coluna da esquerda -->
+<div class="col-md-3"></div>
+<!-- Div Principal -->
 <div class="col-md-6 col-xs-12">
     <!-- Alerta -->
     <?php if(!empty($erro)) {?>
@@ -31,23 +31,20 @@ require_once "../action/produtoAction.php";
         <input name="unidade" class="form-control" type="text" value="<?=$unidade?>"><br>
         <label for="preco">Preço:</label>
         <input name="preco" class="form-control" type="text" value="<?=$preco?>"><br>
-        <button type="submit" class="btn btn-success btn-block" name="cadastrar"><span class="glyphicon glyphicon-plus"></span></button>
+        <button type="submit" class="btn btn-success btn-block" name="cadastrar"><i class="fa fa-save fa-2x"></i></span></button>
     </form>
-</div>
 
-<!-- Coluna da direita -->
-<div class="col-md-6 col-xs-12">
-    <p class="text-center"><strong>Registros</strong></p>
+    <br><br>
     <!-- Tabela -->
     <div class="table-responsive">
         <table class="table table-striped table-hover table-condensed" id="tabela-produtos">
             <thead>
-                <th>Código:</th>
-                <th>Descrição:</th>
-                <th>Unidade:</th>
-                <th>Preço:</th>
-                <th></th>
-                <th></th>
+            <th>Código:</th>
+            <th>Descrição:</th>
+            <th>Unidade:</th>
+            <th>Preço:</th>
+            <th></th>
+            <th></th>
             </thead>
             <tbody>
             <?php
