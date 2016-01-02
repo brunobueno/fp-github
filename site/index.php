@@ -37,11 +37,10 @@ require_once "../action/produtoAction.php";
 
 <!-- Coluna da direita -->
 <div class="col-md-6 col-xs-12">
-    <br>
     <p class="text-center"><strong>Registros</strong></p>
     <!-- Tabela -->
     <div class="table-responsive">
-        <table class="table table-striped table-hover table-condensed">
+        <table class="table table-striped table-hover table-condensed" id="tabela-produtos">
             <thead>
                 <th>Código:</th>
                 <th>Descrição:</th>
@@ -80,5 +79,5 @@ require_once "../action/produtoAction.php";
     </div>
 </div>
 
-
+<script>$(document).ready(function(){ $('#tabela-produtos').dataTable({ "language": {"url": "../js/dataTables.portuguese.lang"}}); })</script>
 <?php include_once "../templates/footer.php";?>
