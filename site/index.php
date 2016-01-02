@@ -65,7 +65,7 @@ require_once "../action/produtoAction.php";
                     <td>
                         <form action="index.php" method="post">
                             <input type="hidden" name="codigo" value="<?=$dado->produto_id?>">
-                            <button type="submit" name="excluir" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                            <button type="submit" name="excluir" onclick="return confirm('Deseja excluir <?=$dado->descricao?>?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                         </form>
                     </td>
                 </tr>
