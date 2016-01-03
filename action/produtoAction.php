@@ -85,7 +85,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             $prod = $produto->listarId();
             $descricao = $prod->descricao;
             $unidade = $prod->unidade;
-            $preco = $prod->preco;
+            $preco = number_format($prod->preco, 2, ',', '.');
             break;
         case isset($_POST['excluir']):
             try

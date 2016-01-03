@@ -9,9 +9,9 @@
 require_once "../action/produtoAction.php";
 ?>
 
-<div class="col-md-3"></div>
+<div class="col-md-2"></div>
 <!-- Div Principal -->
-<div class="col-md-6 col-xs-12">
+<div class="col-md-8 col-xs-12">
     <!-- Alerta -->
     <?php if(!empty($erro)) {?>
     <div class="bs-example bs-example-standalone" data-example-id="dismissible-alert-js">
@@ -23,18 +23,29 @@ require_once "../action/produtoAction.php";
     <?php } ?>
 
     <!-- Form -->
-    <form action="index.php" method="post">
+    <form action="index.php" method="post" class="form-horizontal">
         <input type="hidden" name="codigo" value="<?=$codigo?>">
-        <label for="descricao">Descrição: </label>
-        <input name="descricao" class="form-control" type="text" value="<?=$descricao?>"><br>
-        <label for="unidade">Unidade:</label>
-        <input name="unidade" class="form-control" type="text" value="<?=$unidade?>"><br>
-        <label for="preco">Preço:</label>
-        <input name="preco" class="form-control" type="text" value="<?=$preco?>"><br>
-        <button type="submit" class="btn btn-success btn-block" name="cadastrar"><i class="fa fa-save fa-2x"></i></span></button>
+        <div class="form-group">
+            <div class="col-md-7 col-xs-12">
+                <label for="descricao">Descrição: </label>
+                <input name="descricao" class="form-control" type="text" value="<?=$descricao?>"><br>
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <label for="unidade">Unidade:</label>
+                <input name="unidade" class="form-control" type="text" value="<?=$unidade?>"><br>
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <label for="preco">Preço:</label>
+                <input name="preco" class="form-control" type="text" value="<?=$preco?>"><br>
+            </div>
+            <div class="col-md-1 col-xs-12">
+                <label for="cadastrar">Salvar</label>
+                <button type="submit" class="btn btn-success btn-block" name="cadastrar"><i class="fa fa-check fa-lg"></i></span></button>
+            </div>
+        </div>
     </form>
 
-    <br><br>
+    <div class="text-center"><strong class="fa-lg"><i class="fa fa-list "></i> Produtos</strong></div>
     <!-- Tabela -->
     <div class="table-responsive">
         <table class="table table-striped table-hover table-condensed" id="tabela-produtos">
@@ -43,8 +54,8 @@ require_once "../action/produtoAction.php";
             <th>Descrição:</th>
             <th>Unidade:</th>
             <th>Preço:</th>
-            <th></th>
-            <th></th>
+            <th>Editar</th>
+            <th>Excluir</th>
             </thead>
             <tbody>
             <?php
